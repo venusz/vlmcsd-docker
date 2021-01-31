@@ -8,4 +8,4 @@ RUN apk add --no-cache git make build-base && \
 FROM alpine:latest
 WORKDIR /root/
 COPY --from=builder /root/vlmcsd/bin/vlmcsd /usr/bin/vlmcsd
-CMD [ "/usr/bin/vlmcsd", "-D", "-d", "-L", "0.0.0.0:$PORT"]
+CMD [ "/usr/bin/vlmcsd", "-D", "-d", "-L", 0.0.0.0:$PORT]
