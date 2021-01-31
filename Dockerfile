@@ -8,4 +8,4 @@ RUN apk add --no-cache git make build-base && \
 FROM alpine:latest
 WORKDIR /root/
 COPY --from=builder /root/vlmcsd/bin/vlmcsd /usr/bin/vlmcsd
-CMD $(echo "/usr/bin/vlmcsd -D -d -L 0.0.0.0:$PORT" | sed 's/=//')
+CMD /usr/bin/vlmcsd -D -d -L 0.0.0.0:$PORT
