@@ -8,5 +8,5 @@ RUN apk add --no-cache git make build-base && \
 FROM alpine:latest
 WORKDIR /root/
 COPY --from=builder /root/vlmcsd/bin/vlmcsd /usr/bin/vlmcsd
-EXPOSE 1688/tcp
-CMD [ "/usr/bin/vlmcsd", "-D", "-d" ]
+CMD gunicorn --bind 0.0.0.0:$PORT wsgi
+CMD [ "/usr/bin/vlmcsd", "-D", "-d", "-P $PORT"]
